@@ -1,5 +1,3 @@
-import React from 'react'
-
 function FormData({ todoTasks, setTodoTasks }) {
   // Delete task functionality
   const handleDelete = (task) => {
