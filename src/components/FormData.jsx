@@ -19,9 +19,9 @@ function FormData({ todoTasks, setTodoTasks }) {
 
           <span style={{ textDecoration: task.isCompleted ? "line-through" : "none" }}>{task.content}</span>
 
-          <button onClick={() => handleCheckbox(task.id)}>{task.isCompleted ? "Undo" : "Complete"}</button>
-          
-          <button onClick={() => handleDelete(task.id)}>Delete</button>
+          <button onClick={() => handleCheckbox(task.id)}>{task.isCompleted ? "↺" : "✓"}</button>
+
+          <button onClick={() => handleDelete(task.id)}>X</button>
         </li>
       ))}
     </ul>
