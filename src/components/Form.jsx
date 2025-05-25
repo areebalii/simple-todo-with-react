@@ -12,7 +12,12 @@ function Form({ todoTasks, setTodoTasks }) {
     if (todoTasks.includes(ifTaskExist)) {
       alert("Task already exists")
     } else {
-      setTodoTasks((prevTasks) => [...prevTasks, inputValue])
+      const newTasks = {
+        id: Date.now(),
+        content: inputValue,
+        isCompleted: false
+      }
+      setTodoTasks((prevTasks) => [...prevTasks, newTasks])
     }
     setInputValue("")
   }

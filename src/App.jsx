@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from './components/Header'
 import DateTime from './components/DateTime'
@@ -7,7 +7,22 @@ import FormData from './components/FormData'
 import ClearAll from './components/ClearAll'
 
 function App() {
-  const [todoTasks, setTodoTasks] = useState([])
+  const getLocalStorage = () => {
+    let list = localStorage.getItem("todoTasks");
+    if (list) {
+      return JSON.parse(localStorage.getItem("todoTasks"));
+    } else {
+      return [];
+    }
+  }
+  const [todoTasks, setTodoTasks] = useState(() => getLocalStorage());
+
+  localStorage.setItem("todoTasks", JSON.stringify(todoTasks));
+
+  // useEffect(() => {
+  //   JSON.parse(localStorage.getItem("todoTasks") || [])
+  // }, [todoTasks])
+
 
   return (
     <>
@@ -25,7 +40,7 @@ function App() {
         <section className='myUnOrdList'>
           <FormData todoTasks={todoTasks} setTodoTasks={setTodoTasks} />
         </section>
-      <ClearAll todoTasks={todoTasks} setTodoTasks={setTodoTasks} />
+        <ClearAll todoTasks={todoTasks} setTodoTasks={setTodoTasks} />
 
 
       </section>
